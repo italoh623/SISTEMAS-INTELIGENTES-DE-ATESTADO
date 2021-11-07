@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<div>
+    <form action="/conta/inserir" method="get">
+        <label for="login">Login</label>
+        <input id="login" />
+        <label for="senha">Senha</label>
+        <input id="senha" />
+        <button type="submit">Submit</button >
+    </form>
+
+    <span th:text="${senha}">Senha da Conta:></span>
+</div>
+</body>
+</html>
