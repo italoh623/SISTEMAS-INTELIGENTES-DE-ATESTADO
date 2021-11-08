@@ -1,11 +1,29 @@
 package ufpe.cin.gerenciamento.atestados.entidades;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class PedidoAbono {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @OneToOne()
     private Funcionario funcionario;
     private String date;
     private String inicio;
     private String fim;
     private String justificativa;
+
+    PedidoAbono() {
+
+    }
 
     public Funcionario getFuncionario() {
         return this.funcionario;
