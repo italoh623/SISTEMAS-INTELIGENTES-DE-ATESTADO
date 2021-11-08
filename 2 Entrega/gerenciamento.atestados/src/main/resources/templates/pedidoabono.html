@@ -1,36 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymleaf.org">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Solicitar Abono</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
+
 <body>
-<div>
-    <form action="/criarPedidoAbono" method="get">
-        <table>
-            <tr>
-              <th>Campo</th>
-              <th>Input</th>
-            </tr>
-            <tr>
-              <td>
-                <label for="inicio">Data Início</label>
-                <input id="inicio" />
-              </td>
-              <td>
-                <label for="fim">Data Fim</label>
-                <input id="fim" />
-              </td>
-              <td>
-                <label for="justificativa">Justificativa</label>
-                <input id="justificativa" />
-              </td>
-            </tr>
-          </table>
-        <button type="submit">Submit</button >
-    </form>
-</div>
+    <div style="display: flex; justify-content: center; flex: 1;">
+        <form action="/pedidoabono/criar" method="get">
+
+            <table>
+                <tr>
+                    <th colspan="2">Solicitação de Abono de Faltas</th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="inicio">Data Início</label>
+
+                    </td>
+                    <td>
+                        <input name="inicio" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fim">Data Fim</label>
+
+                    </td>
+                    <td>
+                        <input name="fim" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="justificativa">Justificativa</label>
+
+                    </td>
+                    <td>
+                        <input name="justificativa" />
+                    </td>
+                </tr>
+            </table>
+            <button style="margin-top: 10px;" type="submit">Submit</button>
+        </form>
+    </div>
 </body>
+
 </html>
