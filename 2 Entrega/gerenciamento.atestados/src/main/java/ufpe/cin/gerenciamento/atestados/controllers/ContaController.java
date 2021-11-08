@@ -15,7 +15,6 @@ public class ContaController {
 
     @Autowired
     Fachada fachada;
-    private static final AtomicLong idCounter = new AtomicLong();
 
     @GetMapping(path = "/")
     public String registrarConta(Model model) {
