@@ -8,15 +8,32 @@
 </head>
 <body>
 <div>
+    Cadastrar Usuário:
     <form action="/conta/inserir" method="get">
         <label for="login">Login</label>
-        <input id="login" />
+        <input name="login" />
         <label for="senha">Senha</label>
-        <input id="senha" />
+        <input name="senha" />
         <button type="submit">Submit</button >
     </form>
 
-    <span th:text="${senha}">Senha da Conta:></span>
+    <br><br>Recuperar Senha:
+    <form action="/conta/recuperarSenha" method="get">
+        <label for="login">Login</label>
+        <input name="login" />
+        <button type="submit">Submit</button >
+    </form>
+
+    <span th:text="${senhaRecuperada}">Senha da Conta:></span>
+
+    <br><br>Login:
+    <form action="/conta/efetuarLogin" method="get">
+        <label for="login">Login</label>
+        <input name="login" />
+        <label for="senha">Senha</label>
+        <input name="senha" />
+        <button type="submit">Submit</button >
+    </form>
 </div>
 </body>
 </html>

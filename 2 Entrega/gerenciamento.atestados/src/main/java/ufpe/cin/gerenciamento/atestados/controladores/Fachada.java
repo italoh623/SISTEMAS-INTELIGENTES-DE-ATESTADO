@@ -10,15 +10,15 @@ public class Fachada {
     @Autowired
     private ControladorLogin controladorLogin;
 
-    public void efetuarLogin(String login, String senha) {
-        controladorLogin.efetuarLogin(login, senha);
-    }
-
     public String recuperarSenha(String login) {
         return controladorLogin.recuperarSenha(login);
     }
 
     public void addConta(Conta conta) {
         controladorLogin.addConta(conta);
+    }
+
+    public void efetuarLogin(Conta conta) throws Exception {
+        controladorLogin.efetuarLogin(conta);
     }
 }

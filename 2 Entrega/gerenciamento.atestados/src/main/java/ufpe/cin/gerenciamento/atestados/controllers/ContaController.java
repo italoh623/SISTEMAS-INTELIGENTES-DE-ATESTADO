@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ufpe.cin.gerenciamento.atestados.controladores.Fachada;
 import ufpe.cin.gerenciamento.atestados.entidades.Conta;
 
@@ -17,22 +18,34 @@ public class ContaController {
     Fachada fachada;
     private static final AtomicLong idCounter = new AtomicLong();
 
-    @GetMapping(path = "/efetuarLogin")
-    public void efetuarLogin(String login, String senha) {
-        return;
-    }
-
-    @GetMapping(path = "/registrarConta")
+    @GetMapping(path = "/login")
     public String registrarConta(Model model) {
-        String senha = fachada.recuperarSenha("test");
-        model.addAttribute("senha", senha);
         return "login";
     }
 
-    @GetMapping("/conta/inserir/")
-    public String novaConta(@RequestParam(name = "login") String login){
-        Conta conta = new Conta(login, "senha123");
+    @GetMapping(path = "/conta/recuperarSenha")
+    public String recuperarSenha(Model model, @RequestParam(name = "login") String login) {
+        String senha = fachada.recuperarSenha(login);
+        model.addAttribute("senhaRecuperada", senha);
+        return "login";
+    }
+
+    @GetMapping("/conta/inserir")
+    public String novaConta(@RequestParam(name = "login") String login, @RequestParam(name = "senha") String senha) {
+        Conta conta = new Conta(login, senha);
         fachada.addConta(conta);
-        return "redirect:/registrarConta";
+        return "redirect:/login";
+    }
+
+    @GetMapping("/conta/efetuarLogin")
+    public String login(RedirectAttributes redirAttrs, @RequestParam(name = "login") String login, @RequestParam(name = "senha") String senha) {
+        Conta conta = new Conta(login, senha);
+        try {
+            fachada.efetuarLogin(conta);
+            redirAttrs.addFlashAttribute("error", "The error XYZ occurred.");
+            return "redirect:/funcionario";
+        } catch(Exception e) {
+            return "redirect:/login";
+        }
     }
 }
