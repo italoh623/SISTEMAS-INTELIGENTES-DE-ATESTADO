@@ -27,15 +27,15 @@ public class ControladorLogin {
         this.cadastroConta = cadastroConta;
     }
 
-    public void efetuarLogin(String login, String senha) {
-        cadastroConta.efetuarLogin(login, senha);
-    }
-
     public String recuperarSenha(String login) {
         return cadastroConta.getSenhaByLogin(login);
     }
 
     public void addConta(Conta conta) {
         cadastroConta.addConta(conta);
+    }
+
+    public void efetuarLogin(Conta conta) throws Exception {
+        cadastroConta.efetuarLogin(conta);
     }
 }

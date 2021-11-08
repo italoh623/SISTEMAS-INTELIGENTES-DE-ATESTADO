@@ -18,16 +18,30 @@ public class CadastroConta {
     private IRepositorioConta repositorioConta;
 
     public String getSenhaByLogin(String login) {
-        String senha = "senha default";
         List<Conta> contas = (List<Conta>) repositorioConta.findAll();
-        if (contas.size() > 0) return contas.get(0).getSenha();
-        return senha;
-    }
-
-    public void efetuarLogin(String login, String senha) {
+        for (Conta conta : contas) {
+            if (conta.getLogin().equals(login)) {
+                return conta.getSenha();
+            }
+        }
+        return "Login Inválido";
     }
 
     public void addConta(Conta conta) {
         repositorioConta.save(conta);
+    }
+
+    public void efetuarLogin(Conta conta1) throws Exception {
+        List<Conta> contas = (List<Conta>) repositorioConta.findAll();
+
+        for (Conta conta : contas) {
+            if (conta.getLogin().equals(conta1.getLogin())) {
+                if (conta.getSenha().equals(conta1.getSenha())) {
+                    return;
+                }
+                throw new Exception("Senha Incorreta");
+            }
+        }
+        throw new Exception("Usuário inexistente");
     }
 }
