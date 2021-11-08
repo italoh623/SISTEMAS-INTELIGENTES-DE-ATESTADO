@@ -8,10 +8,13 @@ import ufpe.cin.gerenciamento.atestados.repositorios.IRepositorioFuncionario;
 @Component
 public class CadastroFuncionario {
 
-    @Autowired
     private IRepositorioFuncionario repositorioFuncionario;
 
+    public CadastroFuncionario(IRepositorioFuncionario repositorioFuncionario) {
+        this.repositorioFuncionario = repositorioFuncionario;
+    }
+
     public void addFuncionario(Funcionario funcionario) {
-        repositorioFuncionario.save(funcionario);
+        repositorioFuncionario.inserir(funcionario);
     }
 }

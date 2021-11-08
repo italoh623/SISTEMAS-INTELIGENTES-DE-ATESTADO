@@ -6,8 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ufpe.cin.gerenciamento.atestados.controladores.Fachada;
-import ufpe.cin.gerenciamento.atestados.entidades.Conta;
+import ufpe.cin.gerenciamento.atestados.fachada.Fachada;
 
 import java.util.concurrent.atomic.AtomicLong;
 

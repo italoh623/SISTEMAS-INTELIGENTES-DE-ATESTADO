@@ -6,26 +6,26 @@ import ufpe.cin.gerenciamento.atestados.ApplicationContextHolder;
 import ufpe.cin.gerenciamento.atestados.entidades.Conta;
 import ufpe.cin.gerenciamento.atestados.entidades.Funcionario;
 import ufpe.cin.gerenciamento.atestados.repositorios.dao.ContaDAO;
+import ufpe.cin.gerenciamento.atestados.repositorios.dao.FuncionarioDAO;
 
 import java.util.List;
 
 @Component
-public class RepositorioContaBDR implements IRepositorioConta {
-
+public class RepositorioFuncionarioBDR implements IRepositorioFuncionario {
     @Autowired
-    private ContaDAO contaDAO;
+    private FuncionarioDAO funcionarioDAO;
 
-    public RepositorioContaBDR(){
-        this.contaDAO = ApplicationContextHolder.getContext().getBean(ContaDAO.class);
+    public RepositorioFuncionarioBDR(){
+        this.funcionarioDAO = ApplicationContextHolder.getContext().getBean(FuncionarioDAO.class);
     }
 
     @Override
-    public Conta inserir(Conta conta) {
-        return contaDAO.save(conta);
+    public void inserir(Funcionario funcionario) {
+        funcionarioDAO.save(funcionario);
     }
 
     @Override
-    public List<Conta> getAll() {
-        return contaDAO.findAll();
+    public List<Funcionario> getAll() {
+        return funcionarioDAO.findAll();
     }
 }

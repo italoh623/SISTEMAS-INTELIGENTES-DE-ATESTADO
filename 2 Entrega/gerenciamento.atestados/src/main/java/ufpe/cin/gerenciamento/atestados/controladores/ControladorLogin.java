@@ -6,20 +6,20 @@ import ufpe.cin.gerenciamento.atestados.cadastros.CadastroConta;
 import ufpe.cin.gerenciamento.atestados.cadastros.CadastroFuncionario;
 import ufpe.cin.gerenciamento.atestados.entidades.Conta;
 import ufpe.cin.gerenciamento.atestados.entidades.Funcionario;
+import ufpe.cin.gerenciamento.atestados.repositorios.IRepositorioConta;
+import ufpe.cin.gerenciamento.atestados.repositorios.IRepositorioFuncionario;
 
 @Component
 public class ControladorLogin {
 
-    @Autowired
     private CadastroConta cadastroConta;
-
-    @Autowired
     private CadastroFuncionario cadastroFuncionario;
 
     public ControladorLogin() {}
 
-    public ControladorLogin(CadastroConta cadastroConta) {
-        this.cadastroConta = cadastroConta;
+    public ControladorLogin(IRepositorioConta repositorioConta, IRepositorioFuncionario repositorioFuncionario) {
+        this.cadastroConta = new CadastroConta(repositorioConta);
+        this.cadastroFuncionario = new CadastroFuncionario(repositorioFuncionario);
     }
 
     public CadastroConta getCadastroConta() {

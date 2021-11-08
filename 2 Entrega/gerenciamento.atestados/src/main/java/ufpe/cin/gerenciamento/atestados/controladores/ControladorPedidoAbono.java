@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import ufpe.cin.gerenciamento.atestados.cadastros.CadastroPedidoAbono;
 import ufpe.cin.gerenciamento.atestados.entidades.PedidoAbono;
+import ufpe.cin.gerenciamento.atestados.repositorios.IRepositorioPedidoAbono;
 
 @Component
 public class ControladorPedidoAbono {
@@ -16,8 +17,8 @@ public class ControladorPedidoAbono {
 
     }
 
-    ControladorPedidoAbono(CadastroPedidoAbono cadastroPedidoAbono) {
-        this.cadastroPedidoAbono = cadastroPedidoAbono;
+    public ControladorPedidoAbono(IRepositorioPedidoAbono repositorioPedidoAbono) {
+        this.cadastroPedidoAbono = new CadastroPedidoAbono(repositorioPedidoAbono);
     }
 
     public CadastroPedidoAbono getCadastroPedidoAbono() {

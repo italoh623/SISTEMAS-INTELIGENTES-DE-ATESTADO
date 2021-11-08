@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ufpe.cin.gerenciamento.atestados.controladores.Fachada;
 import ufpe.cin.gerenciamento.atestados.entidades.Funcionario;
 import ufpe.cin.gerenciamento.atestados.entidades.PedidoAbono;
+import ufpe.cin.gerenciamento.atestados.fachada.Fachada;
 
 @Controller
 public class PedidoAbonoController {
