@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class ComunicaçãoGeradorSenha implements InterfaceComunicaçãoGeradorSenha {
 
-    public static final String URL = "https://random.justyy.workers.dev/api/random/?cached&n=18";
+    public static final String URL = "https://random.justyy.workers.dev/api/random/?cached&n=18&x=7";
 
     @Override
     public String gerarSenha() throws Exception {

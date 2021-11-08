@@ -30,6 +30,13 @@ public class ContaController {
         return "login";
     }
 
+    @GetMapping("/conta/senha")
+    public String gerarSenha(Model model) {
+        String senha = fachada.gerarSenha();
+        model.addAttribute("senhaGerada", senha);
+        return "login";
+    }
+
     @GetMapping("/conta/inserir")
     public String novaConta(@RequestParam(name = "login") String login, @RequestParam(name = "senha") String senha) {
         Conta conta = new Conta(login, senha);

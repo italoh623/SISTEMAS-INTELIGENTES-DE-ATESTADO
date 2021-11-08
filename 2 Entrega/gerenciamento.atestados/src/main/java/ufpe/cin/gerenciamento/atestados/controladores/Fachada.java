@@ -35,4 +35,8 @@ public class Fachada {
     public void mostrarNotificacao() {
         controladorPedidoAbono.mostrarNotificacao();
     }
+
+    public String gerarSenha() {
+        return controladorLogin.gerarSenha();
+    }
 }

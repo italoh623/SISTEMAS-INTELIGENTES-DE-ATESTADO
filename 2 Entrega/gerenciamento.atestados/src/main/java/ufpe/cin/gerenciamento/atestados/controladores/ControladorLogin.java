@@ -2,6 +2,9 @@ package ufpe.cin.gerenciamento.atestados.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import ufpe.cin.gerenciamento.ComunicaçãoGeradorSenha.ComunicaçãoGeradorSenha;
+import ufpe.cin.gerenciamento.ComunicaçãoGeradorSenha.InterfaceComunicaçãoGeradorSenha;
 import ufpe.cin.gerenciamento.atestados.cadastros.CadastroConta;
 import ufpe.cin.gerenciamento.atestados.entidades.Conta;
 
@@ -10,6 +13,7 @@ public class ControladorLogin {
 
     @Autowired
     private CadastroConta cadastroConta;
+    private InterfaceComunicaçãoGeradorSenha geradorSenha = new ComunicaçãoGeradorSenha();
 
     public ControladorLogin() {
 
@@ -37,5 +41,13 @@ public class ControladorLogin {
 
     public void efetuarLogin(Conta conta) throws Exception {
         cadastroConta.efetuarLogin(conta);
+    }
+
+    public String gerarSenha() {
+        try {
+            return geradorSenha.gerarSenha();
+        } catch (Exception exception) {
+            return "";
+        }  
     }
 }
