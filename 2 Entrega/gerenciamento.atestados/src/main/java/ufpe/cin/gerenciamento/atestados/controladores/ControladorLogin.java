@@ -3,7 +3,9 @@ package ufpe.cin.gerenciamento.atestados.controladores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ufpe.cin.gerenciamento.atestados.cadastros.CadastroConta;
+import ufpe.cin.gerenciamento.atestados.cadastros.CadastroFuncionario;
 import ufpe.cin.gerenciamento.atestados.entidades.Conta;
+import ufpe.cin.gerenciamento.atestados.entidades.Funcionario;
 
 @Component
 public class ControladorLogin {
@@ -11,9 +13,10 @@ public class ControladorLogin {
     @Autowired
     private CadastroConta cadastroConta;
 
-    public ControladorLogin() {
+    @Autowired
+    private CadastroFuncionario cadastroFuncionario;
 
-    }
+    public ControladorLogin() {}
 
     public ControladorLogin(CadastroConta cadastroConta) {
         this.cadastroConta = cadastroConta;
@@ -31,11 +34,16 @@ public class ControladorLogin {
         return cadastroConta.getSenhaByLogin(login);
     }
 
-    public void addConta(Conta conta) {
-        cadastroConta.addConta(conta);
+    public void addConta(String login, String senha, String nome, String cargo) {
+        Funcionario funcionario = new Funcionario(nome, cargo);
+        cadastroFuncionario.addFuncionario(funcionario);
+
+        Conta conta = new Conta(login, senha, funcionario);
+
+        Conta conta1 = cadastroConta.addConta(conta);
     }
 
-    public void efetuarLogin(Conta conta) throws Exception {
-        cadastroConta.efetuarLogin(conta);
+    public Long efetuarLogin(String login, String senha) throws Exception {
+        return cadastroConta.efetuarLogin(login, senha);
     }
 }

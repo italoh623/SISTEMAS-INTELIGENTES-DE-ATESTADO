@@ -10,9 +10,7 @@ import java.util.List;
 @Component
 public class CadastroConta {
 
-    public CadastroConta() {
-
-    }
+    public CadastroConta() {}
 
     @Autowired
     private IRepositorioConta repositorioConta;
@@ -27,17 +25,17 @@ public class CadastroConta {
         return "Login Inválido";
     }
 
-    public void addConta(Conta conta) {
-        repositorioConta.save(conta);
+    public Conta addConta(Conta conta) {
+        return repositorioConta.save(conta);
     }
 
-    public void efetuarLogin(Conta conta1) throws Exception {
+    public Long efetuarLogin(String login, String senha) throws Exception {
         List<Conta> contas = (List<Conta>) repositorioConta.findAll();
 
         for (Conta conta : contas) {
-            if (conta.getLogin().equals(conta1.getLogin())) {
-                if (conta.getSenha().equals(conta1.getSenha())) {
-                    return;
+            if (conta.getLogin().equals(login)) {
+                if (conta.getSenha().equals(senha)) {
+                    return conta.getId();
                 }
                 throw new Exception("Senha Incorreta");
             }

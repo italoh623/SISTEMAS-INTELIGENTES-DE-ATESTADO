@@ -1,5 +1,2 @@
-package ufpe.cin.gerenciamento.atestados.repositorios;
-
-public class FabricaAbstrataRepositorio {
-    
+package ufpe.cin.gerenciamento.atestados.repositorios;public class FabricaAbstrataRepositorio {
 }

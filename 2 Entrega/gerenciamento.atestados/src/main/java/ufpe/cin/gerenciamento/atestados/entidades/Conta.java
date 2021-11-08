@@ -1,9 +1,6 @@
 package ufpe.cin.gerenciamento.atestados.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Conta {
@@ -13,14 +10,17 @@ public class Conta {
     private Long id;
     private String login;
     private String senha;
+    @OneToOne()
+    private Funcionario funcionario;
 
     public Conta() {
 
     }
 
-    public Conta(String login, String senha) {
+    public Conta(String login, String senha, Funcionario funcionario) {
         this.login = login;
         this.senha = senha;
+        this.funcionario = funcionario;
     }
 
     public String getLogin() {
@@ -39,4 +39,7 @@ public class Conta {
         this.senha = senha; 
     }
 
+    public Long getId() {
+        return this.id;
+    }
 }

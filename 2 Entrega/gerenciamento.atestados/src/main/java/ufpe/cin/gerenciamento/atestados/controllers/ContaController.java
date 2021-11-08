@@ -18,7 +18,7 @@ public class ContaController {
     Fachada fachada;
     private static final AtomicLong idCounter = new AtomicLong();
 
-    @GetMapping(path = "/login")
+    @GetMapping(path = "/")
     public String registrarConta(Model model) {
         return "login";
     }
@@ -31,21 +31,23 @@ public class ContaController {
     }
 
     @GetMapping("/conta/inserir")
-    public String novaConta(@RequestParam(name = "login") String login, @RequestParam(name = "senha") String senha) {
-        Conta conta = new Conta(login, senha);
-        fachada.addConta(conta);
-        return "redirect:/login";
+    public String novaConta(
+            @RequestParam(name = "login") String login,
+            @RequestParam(name = "senha") String senha,
+            @RequestParam(name = "nome") String nome,
+            @RequestParam(name = "cargo") String cargo) {
+        fachada.addConta(login, senha, nome, cargo);
+        return "redirect:/";
     }
 
     @GetMapping("/conta/efetuarLogin")
     public String login(RedirectAttributes redirAttrs, @RequestParam(name = "login") String login, @RequestParam(name = "senha") String senha) {
-        Conta conta = new Conta(login, senha);
         try {
-            fachada.efetuarLogin(conta);
-            redirAttrs.addFlashAttribute("error", "The error XYZ occurred.");
-            return "redirect:/funcionario";
+            Long contaId = fachada.efetuarLogin(login, senha);
+            return "redirect:/funcionario/" + contaId;
         } catch(Exception e) {
-            return "redirect:/login";
+            redirAttrs.addFlashAttribute("error", "Login ou senha incorretos.");
+            return "redirect:/";
         }
     }
 }

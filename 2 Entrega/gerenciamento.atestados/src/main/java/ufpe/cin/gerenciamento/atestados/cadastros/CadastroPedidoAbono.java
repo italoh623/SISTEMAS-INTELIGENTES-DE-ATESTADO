@@ -14,7 +14,6 @@ public class CadastroPedidoAbono {
     }
 
     public void enviarPedidoAbono(PedidoAbono pedidoAbono) {
-        repositorioConta.save(pedidoAbono);
     }
 
     public void mostrarNotificacao() {

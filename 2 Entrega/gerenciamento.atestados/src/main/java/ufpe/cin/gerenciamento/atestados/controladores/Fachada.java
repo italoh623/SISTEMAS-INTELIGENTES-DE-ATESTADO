@@ -14,11 +14,11 @@ public class Fachada {
         return controladorLogin.recuperarSenha(login);
     }
 
-    public void addConta(Conta conta) {
-        controladorLogin.addConta(conta);
+    public void addConta(String login, String senha, String nome, String cargo) {
+        controladorLogin.addConta(login, senha, nome, cargo);
     }
 
-    public void efetuarLogin(Conta conta) throws Exception {
-        controladorLogin.efetuarLogin(conta);
+    public Long efetuarLogin(String login, String senha) throws Exception {
+        return controladorLogin.efetuarLogin(login, senha);
     }
 }
