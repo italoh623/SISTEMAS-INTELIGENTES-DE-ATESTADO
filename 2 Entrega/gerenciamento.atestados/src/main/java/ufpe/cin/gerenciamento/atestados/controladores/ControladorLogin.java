@@ -6,21 +6,24 @@ import org.springframework.stereotype.Component;
 import ufpe.cin.gerenciamento.ComunicaçãoGeradorSenha.ComunicaçãoGeradorSenha;
 import ufpe.cin.gerenciamento.ComunicaçãoGeradorSenha.InterfaceComunicaçãoGeradorSenha;
 import ufpe.cin.gerenciamento.atestados.cadastros.CadastroConta;
+import ufpe.cin.gerenciamento.atestados.cadastros.CadastroFuncionario;
 import ufpe.cin.gerenciamento.atestados.entidades.Conta;
+import ufpe.cin.gerenciamento.atestados.entidades.Funcionario;
+import ufpe.cin.gerenciamento.atestados.repositorios.IRepositorioConta;
+import ufpe.cin.gerenciamento.atestados.repositorios.IRepositorioFuncionario;
 
 @Component
 public class ControladorLogin {
 
-    @Autowired
     private CadastroConta cadastroConta;
+    private CadastroFuncionario cadastroFuncionario;
     private InterfaceComunicaçãoGeradorSenha geradorSenha = new ComunicaçãoGeradorSenha();
 
-    public ControladorLogin() {
+    public ControladorLogin() {}
 
-    }
-
-    public ControladorLogin(CadastroConta cadastroConta) {
-        this.cadastroConta = cadastroConta;
+    public ControladorLogin(IRepositorioConta repositorioConta, IRepositorioFuncionario repositorioFuncionario) {
+        this.cadastroConta = new CadastroConta(repositorioConta);
+        this.cadastroFuncionario = new CadastroFuncionario(repositorioFuncionario);
     }
 
     public CadastroConta getCadastroConta() {
@@ -35,12 +38,17 @@ public class ControladorLogin {
         return cadastroConta.getSenhaByLogin(login);
     }
 
-    public void addConta(Conta conta) {
-        cadastroConta.addConta(conta);
+    public void addConta(String login, String senha, String nome, String cargo) {
+        Funcionario funcionario = new Funcionario(nome, cargo);
+        cadastroFuncionario.addFuncionario(funcionario);
+
+        Conta conta = new Conta(login, senha, funcionario);
+
+        Conta conta1 = cadastroConta.addConta(conta);
     }
 
-    public void efetuarLogin(Conta conta) throws Exception {
-        cadastroConta.efetuarLogin(conta);
+    public Long efetuarLogin(String login, String senha) throws Exception {
+        return cadastroConta.efetuarLogin(login, senha);
     }
 
     public String gerarSenha() {

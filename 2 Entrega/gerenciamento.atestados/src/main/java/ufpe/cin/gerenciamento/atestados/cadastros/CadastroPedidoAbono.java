@@ -7,14 +7,17 @@ import ufpe.cin.gerenciamento.atestados.repositorios.IRepositorioPedidoAbono;
 
 @Component
 public class CadastroPedidoAbono {
+
     private IRepositorioPedidoAbono repositorioPedidoAbono;
 
+    public CadastroPedidoAbono(IRepositorioPedidoAbono repositorioPedidoAbono) {
+        this.repositorioPedidoAbono = repositorioPedidoAbono;
+    }
+
     public void criarPedidoAbono(PedidoAbono pedidoAbono) {
-        
     }
 
     public void enviarPedidoAbono(PedidoAbono pedidoAbono) {
-        repositorioPedidoAbono.save(pedidoAbono);
     }
 
     public void mostrarNotificacao() {
