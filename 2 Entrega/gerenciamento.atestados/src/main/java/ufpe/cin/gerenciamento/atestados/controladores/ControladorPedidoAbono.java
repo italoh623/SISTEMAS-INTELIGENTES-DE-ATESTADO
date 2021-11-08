@@ -24,7 +24,7 @@ public class ControladorPedidoAbono {
         return cadastroPedidoAbono;
     }
 
-    public void setCadastroPedidoAbono() {
+    public void setCadastroPedidoAbono(CadastroPedidoAbono cadastroPedidoAbono) {
         this.cadastroPedidoAbono = cadastroPedidoAbono;
     }
 

@@ -25,6 +25,14 @@ public class PedidoAbono {
 
     }
 
+    public PedidoAbono(Funcionario funcionario, String date, String inicio, String fim, String justificativa) {
+        this.funcionario = funcionario;
+        this.date = date;
+        this.inicio = inicio;
+        this.fim = fim;
+        this.justificativa = justificativa;
+    }
+
     public Funcionario getFuncionario() {
         return this.funcionario;
     }
