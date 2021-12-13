@@ -1,4 +1,4 @@
-package ufpe.cin.gerenciamento.ComunicaçãoGeradorSenha;
+package ufpe.cin.gerenciamento.atestados.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ComunicaçãoGeradorSenha implements InterfaceComunicaçãoGeradorSenha {
+public class GeradorSenha implements IGeradorSenha {
 
     public static final String URL = "https://random.justyy.workers.dev/api/random/?cached&n=18&x=7";
 

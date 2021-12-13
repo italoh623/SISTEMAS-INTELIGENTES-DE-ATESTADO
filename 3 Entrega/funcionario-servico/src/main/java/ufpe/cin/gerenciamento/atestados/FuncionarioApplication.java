@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GerenciamentoAtestadosApplication {
+public class GerarSenhaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GerenciamentoAtestadosApplication.class, args);
+		SpringApplication.run(GerarSenhaApplication.class, args);
 	}
 
 }
