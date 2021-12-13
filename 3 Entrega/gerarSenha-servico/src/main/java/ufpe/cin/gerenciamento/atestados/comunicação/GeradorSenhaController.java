@@ -20,7 +20,6 @@ public class GeradorSenhaController {
     @GetMapping()
     public Map<String, String> gerarSenha(Model model) {
         try {
-            System.out.println(geradorSenha.gerarSenha());
             return Collections.singletonMap("senha", geradorSenha.gerarSenha());
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,13 +1,13 @@
-package ufpe.cin.gerenciamento.atestados.repositorios;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import ufpe.cin.gerenciamento.atestados.entidades.Funcionario;
+package ufpe.cin.gerenciamento.atestados.model;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IRepositorioFuncionario {
 
-    public void inserir(Funcionario funcionario);
+    public long inserir(Funcionario funcionario);
+
+    public Optional<Funcionario> findById(Long id);
 
     public List<Funcionario> getAll();
     

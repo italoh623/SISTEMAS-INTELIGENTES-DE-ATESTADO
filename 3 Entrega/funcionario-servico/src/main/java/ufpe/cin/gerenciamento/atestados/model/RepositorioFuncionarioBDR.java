@@ -1,14 +1,10 @@
-package ufpe.cin.gerenciamento.atestados.repositorios;
+package ufpe.cin.gerenciamento.atestados.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ufpe.cin.gerenciamento.atestados.ApplicationContextHolder;
-import ufpe.cin.gerenciamento.atestados.entidades.Conta;
-import ufpe.cin.gerenciamento.atestados.entidades.Funcionario;
-import ufpe.cin.gerenciamento.atestados.repositorios.dao.ContaDAO;
-import ufpe.cin.gerenciamento.atestados.repositorios.dao.FuncionarioDAO;
-
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class RepositorioFuncionarioBDR implements IRepositorioFuncionario {
@@ -20,12 +16,18 @@ public class RepositorioFuncionarioBDR implements IRepositorioFuncionario {
     }
 
     @Override
-    public void inserir(Funcionario funcionario) {
-        funcionarioDAO.save(funcionario);
+    public long inserir(Funcionario funcionario) {
+        Long id = funcionarioDAO.save(funcionario).getId();
+        return id;
     }
 
     @Override
     public List<Funcionario> getAll() {
         return funcionarioDAO.findAll();
+    }
+
+    @Override
+    public Optional<Funcionario> findById(Long id) {
+        return funcionarioDAO.findById(id);
     }
 }

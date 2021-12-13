@@ -1,4 +1,4 @@
-package ufpe.cin.gerenciamento.atestados.controladores;
+package ufpe.cin.gerenciamento.atestados.model;
 
 public class ControladorFuncionario {
 
