@@ -10,7 +10,7 @@ public class Conta {
     private Long id;
     private String login;
     private String senha;
-    @OneToOne()
+    /* @OneToOne() */
     private Long funcionarioId;
 
     public Conta() {

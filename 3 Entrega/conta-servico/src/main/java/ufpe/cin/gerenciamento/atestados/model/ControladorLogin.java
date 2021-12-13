@@ -1,6 +1,5 @@
 package ufpe.cin.gerenciamento.atestados.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ufpe.cin.gerenciamento.atestados.Comunicação.ComunicaçãoGeradorSenha;
@@ -10,14 +9,13 @@ import ufpe.cin.gerenciamento.atestados.Comunicação.InterfaceComunicaçãoGera
 public class ControladorLogin {
 
     private CadastroConta cadastroConta;
-    private CadastroFuncionario cadastroFuncionario;
+    private IFuncionarioService funcionarioService= new FuncionarioService();
     private InterfaceComunicaçãoGeradorSenha geradorSenha = new ComunicaçãoGeradorSenha();
 
     public ControladorLogin() {}
 
-    public ControladorLogin(IRepositorioConta repositorioConta, IRepositorioFuncionario repositorioFuncionario) {
+    public ControladorLogin(IRepositorioConta repositorioConta) {
         this.cadastroConta = new CadastroConta(repositorioConta);
-        this.cadastroFuncionario = new CadastroFuncionario(repositorioFuncionario);
     }
 
     public CadastroConta getCadastroConta() {
@@ -33,12 +31,13 @@ public class ControladorLogin {
     }
 
     public void addConta(String login, String senha, String nome, String cargo) {
-        Funcionario funcionario = new Funcionario(nome, cargo);
-        cadastroFuncionario.addFuncionario(funcionario);
+        String funcionarioId = funcionarioService.addFuncionario(nome, cargo);
 
-        Conta conta = new Conta(login, senha, funcionario);
+        /* Conta conta = new Conta(login, senha, funcionarioId);
 
-        Conta conta1 = cadastroConta.addConta(conta);
+        Conta conta1 = cadastroConta.addConta(conta); */
+
+        System.out.println("AQUIIII " + funcionarioId);
     }
 
     public Long efetuarLogin(String login, String senha) throws Exception {
