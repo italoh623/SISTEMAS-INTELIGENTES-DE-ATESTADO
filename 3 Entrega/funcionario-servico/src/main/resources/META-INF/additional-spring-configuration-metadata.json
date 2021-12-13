@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "url_base",
+    "type": "java.lang.String",
+    "description": "A description for 'url_base'"
+  },
+  {
+    "name": "url_servico_funcionario",
+    "type": "java.lang.String",
+    "description": "A description for 'url_servico_funcionario'"
+  }
+]}

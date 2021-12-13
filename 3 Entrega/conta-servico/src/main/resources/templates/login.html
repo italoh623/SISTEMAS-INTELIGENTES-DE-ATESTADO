@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login | Gerenciamento de Atestados</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<div>
+    Cadastrar Usuário:
+    <form action="/conta/senha" method="get">
+        <label for="senha">Senha</label>
+        <button type="submit">Gerar Senha</button >
+        <p th:text="${senhaGerada}"></p>
+    </form>
+
+    <form action="/conta/inserir" method="get">
+        <label for="login">Login</label>
+        <input name="login" />
+        <label for="senha">Senha</label>
+        <input name="senha" />
+        <label for="nome">Nome</label>
+        <input name="nome" />
+        <label for="cargo">Cargo</label>
+        <input name="cargo" />
+        <button type="submit">Submit</button >
+    </form>
+
+    <br><br>Recuperar Senha:
+    <form action="/conta/recuperarSenha" method="get">
+        <label for="login">Login</label>
+        <input name="login" />
+        <button type="submit">Submit</button >
+    </form>
+
+    <span th:text="${senhaRecuperada}">Senha da Conta:></span>
+
+    <br><br>Login:
+    <form action="/conta/efetuarLogin" method="get">
+        <label for="login">Login</label>
+        <input name="login" />
+        <label for="senha">Senha</label>
+        <input name="senha" />
+        <button type="submit">Submit</button >
+    </form>
+</div>
+</body>
+</html>
