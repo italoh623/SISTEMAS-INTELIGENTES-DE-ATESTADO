@@ -1,8 +1,10 @@
 package ufpe.cin.gerenciamento.atestados.comunicação;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,12 @@ import ufpe.cin.gerenciamento.atestados.model.RepositorioFuncionarioBDR;
 public class FuncionarioController {
 
     private IRepositorioFuncionario repositorioFuncionario = new RepositorioFuncionarioBDR();
+
+    @GetMapping("")
+    public Map<String, List<Funcionario>> listarFuncionarios() {
+        List<Funcionario> id = repositorioFuncionario.getAll();
+        return Collections.singletonMap("id", id);
+    }
 
     @PostMapping("")
     public Map<String, Long> criarFuncionario(@RequestBody  Funcionario funcionario) {
