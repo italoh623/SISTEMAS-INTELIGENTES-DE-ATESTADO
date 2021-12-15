@@ -15,11 +15,13 @@ public class CadastroConta {
 
     public String getSenhaByLogin(String login) {
         List<Conta> contas = (List<Conta>) repositorioConta.getAll();
+
         for (Conta conta : contas) {
             if (conta.getLogin().equals(login)) {
                 return conta.getSenha();
             }
         }
+
         return "Login Inválido";
     }
 

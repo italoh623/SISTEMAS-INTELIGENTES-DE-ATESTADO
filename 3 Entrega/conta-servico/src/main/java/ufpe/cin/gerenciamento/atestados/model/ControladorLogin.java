@@ -1,10 +1,12 @@
 package ufpe.cin.gerenciamento.atestados.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ControladorLogin {
 
+    @Autowired
     private CadastroConta cadastroConta;
     private IFuncionarioService funcionarioService = new FuncionarioService();
     private IGerarSenhaService gerarSenhaService = new GerarSenhaService();
@@ -31,13 +33,9 @@ public class ControladorLogin {
     public void addConta(String login, String senha, String nome, String cargo) {
         Integer funcionarioId = funcionarioService.addFuncionario(nome, cargo);
 
-        /*
-         * Conta conta = new Conta(login, senha, funcionarioId);
-         * 
-         * Conta conta1 = cadastroConta.addConta(conta);
-         */
+        Conta conta = new Conta(login, senha, new Long(funcionarioId.intValue()));
 
-        System.out.println("AQUIIII " + funcionarioId);
+        Conta conta1 = cadastroConta.addConta(conta);
     }
 
     public Long efetuarLogin(String login, String senha) throws Exception {
