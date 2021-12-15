@@ -22,8 +22,8 @@ public class FuncionarioController {
 
     @GetMapping("")
     public Map<String, List<Funcionario>> listarFuncionarios() {
-        List<Funcionario> id = repositorioFuncionario.getAll();
-        return Collections.singletonMap("id", id);
+        List<Funcionario> listaFuncionarios = repositorioFuncionario.getAll();
+        return Collections.singletonMap("data", listaFuncionarios);
     }
 
     @PostMapping("")

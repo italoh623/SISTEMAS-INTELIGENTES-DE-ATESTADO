@@ -2,17 +2,15 @@ package ufpe.cin.gerenciamento.atestados.model;
 
 import org.springframework.stereotype.Component;
 
-import ufpe.cin.gerenciamento.atestados.Comunicação.ComunicaçãoGeradorSenha;
-import ufpe.cin.gerenciamento.atestados.Comunicação.InterfaceComunicaçãoGeradorSenha;
-
 @Component
 public class ControladorLogin {
 
     private CadastroConta cadastroConta;
-    private IFuncionarioService funcionarioService= new FuncionarioService();
-    private InterfaceComunicaçãoGeradorSenha geradorSenha = new ComunicaçãoGeradorSenha();
+    private IFuncionarioService funcionarioService = new FuncionarioService();
+    private IGerarSenhaService gerarSenhaService = new GerarSenhaService();
 
-    public ControladorLogin() {}
+    public ControladorLogin() {
+    }
 
     public ControladorLogin(IRepositorioConta repositorioConta) {
         this.cadastroConta = new CadastroConta(repositorioConta);
@@ -31,11 +29,13 @@ public class ControladorLogin {
     }
 
     public void addConta(String login, String senha, String nome, String cargo) {
-        String funcionarioId = funcionarioService.addFuncionario(nome, cargo);
+        Integer funcionarioId = funcionarioService.addFuncionario(nome, cargo);
 
-        /* Conta conta = new Conta(login, senha, funcionarioId);
-
-        Conta conta1 = cadastroConta.addConta(conta); */
+        /*
+         * Conta conta = new Conta(login, senha, funcionarioId);
+         * 
+         * Conta conta1 = cadastroConta.addConta(conta);
+         */
 
         System.out.println("AQUIIII " + funcionarioId);
     }
@@ -45,10 +45,6 @@ public class ControladorLogin {
     }
 
     public String gerarSenha() {
-        try {
-            return geradorSenha.gerarSenha();
-        } catch (Exception exception) {
-            return "";
-        }  
+        return gerarSenhaService.gerarSenha();
     }
 }

@@ -16,26 +16,27 @@ public class FuncionarioService implements IFuncionarioService {
     private String urlServicoFuncionario;
 
     private WebClient client() {
-        return WebClient.builder().baseUrl(urlServicoFuncionario).build();
+        return WebClient.builder().baseUrl("http://localhost:8082/funcionario").build();
     }
 
     @Override
-    public String addFuncionario(String nome, String cargo) {
+    public Integer addFuncionario(String nome, String cargo) {
         Map<String, String> body = new HashMap<>();
 
         body.put("nome", nome);
         body.put("cargo", cargo);
         
-        String responseJson = client().post()
+        Integer responseJson = (Integer) client().post()
                 .uri("")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(body), Map.class)
                 .retrieve()
-                .bodyToMono(String.class)
-                .block();
+                .bodyToMono(Map.class)
+                .block()
+                .get("id");
 
-        System.out.println(responseJson);
+        System.out.println(responseJson.toString());
 
-        return "aasdasd";
+        return responseJson;
     }
 }
