@@ -17,14 +17,6 @@ public class GerarSenhaService implements IGerarSenhaService {
 
     @Override
     public String gerarSenha() {
-        /*
-         * String responseJson = client().get()
-         * .uri("")
-         * .retrieve()
-         * .bodyToMono(String.class)
-         * .block();
-         */
-
         String responseJson = (String) client().get()
                 .uri("/")
                 .retrieve()
