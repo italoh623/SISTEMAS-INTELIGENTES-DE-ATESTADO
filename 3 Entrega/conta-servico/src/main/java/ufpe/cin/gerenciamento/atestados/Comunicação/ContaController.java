@@ -49,7 +49,7 @@ public class ContaController {
             @RequestParam(name = "senha") String senha) {
         try {
             Long contaId = controladorLogin.efetuarLogin(login, senha);
-            return "redirect:/funcionario/" + contaId;
+            return "redirect:http://localhost:8082/funcionario/" + contaId;
         } catch (Exception e) {
             redirAttrs.addFlashAttribute("error", "Login ou senha incorretos.");
             return "redirect:/";
